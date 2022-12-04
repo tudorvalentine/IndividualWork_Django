@@ -74,7 +74,7 @@
         <a class="link-1" href="../index.html#services">Наши услуги</a>
       </div> <br>
      <div class="link-ref">
-        <a class="link-1" href="vopros.html">Вопросы</a>
+        <a class="link-1" href="faq.html">Вопросы</a>
       </div> <br>
      <div class="link-ref">
        <a class="link-1" href="contact.html">Контакты</a>
@@ -126,8 +126,9 @@
                       <h1>Вопросы и ответы</h1>
                   </div>
                   <div class="col-xl-10 offset-xl-1 col-lg-10 offset-lg-1">
-                      {% for quession in quessions %}
-                            {% if quession.body_answer != '' %}
+                      {% for quession in quessions %} {# parcurgem întrebările din BD #}
+                            {% if quession.body_answer != '' %} {# Daca intrebarea are raspuns atunci #}
+                                {# afisam intrebarea si raspunsul #}
                                 <button class="accordion"><p><strong>{{ quession.quession }}</strong></p></button>
                                 <div class="panel">
                                     <p>{{ quession.body_answer }}</p>
@@ -140,34 +141,19 @@
                     <h2>Вашего вопроса нет в списке? Задайте его!</h2>
                 </div>
                 <div class="col-xl-4 offset-xl-4 col-lg-4 offset-lg-4 col-md-6 offset-md-3 text-center">
-{#                <form action="quessions/" method = "post">#}
-{#                    <div class="errmsg"></div>#}
-{#                    <input type="text" name="name" class="form-control" placeholder="Ваше имя " value=""><br>#}
-{#                    <div class="errmsg"></div>#}
-{#                    <input type="email" name="email" class="form-control" placeholder="Ваш email" value=""><br>#}
-{#                    <div class="errmsg"></div>#}
-{#                    <textarea  class="form-control"  rows="7" placeholder="Напишите ваш вопрос" name="ques"></textarea>#}
-{#                    <div class="justify-content-center text-center" style="margin-top:20px; padding:10px;">#}
-{#                      <input type="submit" class="btn-primary justify-content-center text-center" value="Задать вопрос" name="intrebare">#}
-{#                    </div>#}
-{#                 </form>#}
                     <form action="" method="post">
                         {% csrf_token %}
-                        {% for field in form %}
-                            <div class="errmsg">{{ field.errors }}</div>
-                            {{ field }}
+                        {% for field in form %} {# parcurgem campurile din forma #}
+                            <div class="errmsg">{{ field.errors }}</div>{# daca nu a trecut validarea, afisam eroarea #}
+                            {{ field }}{# afisam campurile #}
                         {% endfor %}
                         <input type="submit" class="btn-primary justify-content-center text-center mt-5" value="Задать вопрос" name="intrebare">
-                    {{ success }}
+                    {{ success }}{# afisam mesajul de succes sau eroare #}
                     </form>
                 </div>
               </div>
             </div>>
         </section>
-   
-      
-
-
 
 	<!-- My JS -->
 	<script src="{% static 'js/JavaScript.js' %}"></script>

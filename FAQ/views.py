@@ -21,7 +21,7 @@ def quessions(request):
             succes = 'Successfull'
         else:
             succes = 'Ceva a mers prost'
-    return render(request, 'FAQ/html/vopros.html', {"form" : quessForm, 'quessions' : quessions, 'success' : succes})
+    return render(request, 'FAQ/html/faq.html', {"form" : quessForm, 'quessions' : quessions, 'success' : succes})
 
 def contact(request):
     return render(request, 'FAQ/html/contact.html')
